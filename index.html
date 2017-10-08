@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Guitar Easy Play</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    
+    <div class="jumbotron text-center">
+        <h1>Guitar Easy Play</h1>
+        <h2>Green Day - Good Riddance (Time of Your Life)</h2>
+    </div>
+
+    <div class="container">
+        <div class="row text-center" id="chords"></div>
+    </div>
+
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+    
+    <script id="chord-template" type="text/x-handlebars-template">
+        {{#each chord}}
+            <div class="col-xs-6 col-md-4 col-lg-2">
+                    <div class="chord">
+                        <div class="chord-name">
+                                <h2>Chord: {{name}}</h2>
+                        </div>
+                        <div class="chord-diagram">
+                            {{#each tab}}
+                                <span class="finger-{{this}}"></span>
+                            {{/each}}
+                        </div>
+                        <div class="strum-pattern">
+                            {{#each pattern}}
+                                <span>{{this}}</span>
+                            {{/each}}
+                        </div>
+
+                        {{#unless @index}}
+                            <div class="guitar-tuning">
+                                {{#each ../tuning}}
+                                    <span>{{this}}</span>
+                                {{/each}}
+                            </div>
+                        {{/unless}}
+                    </div>
+            </div>
+        {{/each}}    
+    </script>
+
+    <script>
+
+
+
+        var src = $('#chord-template').html(),
+            template = Handlebars.compile(src),
+            chords = {
+                "chord": [
+                  {
+                    "name": "G",
+                    "tab": [8, 13, 17, 18],
+                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
+                  },
+                  {
+                    "name": "G",
+                    "tab": [8, 13, 17, 18],
+                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
+                  },
+                  {
+                    "name": "Cadd9",
+                    "tab": [9, 14, 17, 18],
+                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
+                  },
+                  {
+                    "name": "DSus4",
+                    "tab": [10, 17, 18],
+                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
+                  },
+                  {
+                    "name": "Em7",
+                    "tab": [8, 9, 17, 18],
+                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
+                  },
+                  {
+                    "name": "DSus4",
+                    "tab": [10, 17, 18],
+                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
+                  },
+                  {
+                    "name": "Cadd9",
+                    "tab": [9, 14, 17, 18],
+                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
+                  },
+                  {
+                    "name": "G",
+                    "tab": [8, 13, 17, 18],
+                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
+                  },
+                  {
+                    "name": "Em7",
+                    "tab": [8, 9, 17, 18],
+                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
+                  },
+                  {
+                    "name": "G",
+                    "tab": [8, 13, 17, 18],
+                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
+                  },
+                  {
+                    "name": "Em7",
+                    "tab": [8, 9, 17, 18],
+                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
+                  },
+                  {
+                    "name": "G",
+                    "tab": [8, 13, 17, 18],
+                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
+                  },
+                  {
+                    "name": "Em7",
+                    "tab": [8, 9, 17, 18],
+                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
+                  },
+                  {
+                    "name": "DSus4",
+                    "tab": [10, 17, 18],
+                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
+                  },
+                  {
+                    "name": "G",
+                    "tab": [8, 13, 17, 18],
+                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
+                  }
+                ],
+                "tuning": ['E', 'A', 'D', 'G', 'B', 'E']
+              },
+            oi = template(chords);
+
+            console.log(chords.chord[0].name)
+            console.log(chords.chord[0].tab[0])
+            console.log(chords)
+            console.log(oi)
+            $('#chords').html(oi)
+    </script>
+</body>
+</html>
