@@ -56,99 +56,19 @@
         {{/each}}    
     </script>
 
-    <script>
-
-
-
+    <script type="text/javascript">
         var src = $('#chord-template').html(),
             template = Handlebars.compile(src),
-            chords = {
-                "chord": [
-                  {
-                    "name": "G",
-                    "tab": [8, 13, 17, 18],
-                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
-                  },
-                  {
-                    "name": "G",
-                    "tab": [8, 13, 17, 18],
-                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
-                  },
-                  {
-                    "name": "Cadd9",
-                    "tab": [9, 14, 17, 18],
-                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
-                  },
-                  {
-                    "name": "DSus4",
-                    "tab": [10, 17, 18],
-                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
-                  },
-                  {
-                    "name": "Em7",
-                    "tab": [8, 9, 17, 18],
-                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
-                  },
-                  {
-                    "name": "DSus4",
-                    "tab": [10, 17, 18],
-                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
-                  },
-                  {
-                    "name": "Cadd9",
-                    "tab": [9, 14, 17, 18],
-                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
-                  },
-                  {
-                    "name": "G",
-                    "tab": [8, 13, 17, 18],
-                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
-                  },
-                  {
-                    "name": "Em7",
-                    "tab": [8, 9, 17, 18],
-                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
-                  },
-                  {
-                    "name": "G",
-                    "tab": [8, 13, 17, 18],
-                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
-                  },
-                  {
-                    "name": "Em7",
-                    "tab": [8, 9, 17, 18],
-                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
-                  },
-                  {
-                    "name": "G",
-                    "tab": [8, 13, 17, 18],
-                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
-                  },
-                  {
-                    "name": "Em7",
-                    "tab": [8, 9, 17, 18],
-                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
-                  },
-                  {
-                    "name": "DSus4",
-                    "tab": [10, 17, 18],
-                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
-                  },
-                  {
-                    "name": "G",
-                    "tab": [8, 13, 17, 18],
-                    "pattern": ['↓', '↓', '↑', '↑', '↓', '↑']
-                  }
-                ],
-                "tuning": ['E', 'A', 'D', 'G', 'B', 'E']
-              },
-            oi = template(chords);
+            songData;
 
-            console.log(chords.chord[0].name)
-            console.log(chords.chord[0].tab[0])
-            console.log(chords)
-            console.log(oi)
-            $('#chords').html(oi)
+            $.ajax({
+              url: 'js/song1.json',
+              dataType: 'json',
+              success: function(data) {
+                songData = template(data);
+                $('#chords').html(songData)
+              }
+            });     
     </script>
 </body>
 </html>
